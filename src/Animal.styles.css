@@ -1,0 +1,20 @@
+.Animal {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 7px 7px 13px 1px rgba(0, 0, 0, 0.41);
+  box-shadow: 7px 7px 13px 1px rgba(0, 0, 0, 0.41);
+}
+
+.red {
+  background-color: tomato;
+}
+
+.blue {
+  background-color: cyan;
+}

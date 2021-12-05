@@ -14,12 +14,14 @@ function App() {
   const [counter, setCounter] = useState(0);
   const [valueFromInput, setValueFromInput] = useState('');
   const [animals, setAnimals] = useState([
-    { type: 'cat', canFly: false, color: 'red'},
+    { type: 'cat', canFly: false, color: 'red' },
     { type: 'dog', canFly: false, color: 'orange' },
     { type: 'bat', canFly: true, color: 'coral' },
     { type: 'eagle', canFly: true, color: 'cyan' },
     { type: 'horse', canFly: false, color: 'green' },
   ]);
+
+  const [showAnimals, setShowAnimals] = useState(true);
 
   const deleteAnimal = (animalFromChild) => {
     const filteredAnimals = animals.filter((item) => {
@@ -41,16 +43,21 @@ function App() {
         />
         <h2>What I'm typing: {valueFromInput}</h2>
       </div>
+      <button onClick={() => setShowAnimals(!showAnimals)}>
+        {' '}
+        {showAnimals ? 'Hide animals' : 'Show animals'}
+      </button>
       <div className='flex-space'>
-        {animals.map((animal, index) => {
-          return (
-            <Animal
-              animal={animal}
-              key={index + Date.now()}
-              deleteAnimal={deleteAnimal} // Pasar la función como prop al componente. Le pasamos la referencia para que podamos llamarla desde el hijo
-            />
-          );
-        })}
+        {showAnimals &&
+          animals.map((animal, index) => {
+            return (
+              <Animal
+                animal={animal}
+                key={index + Date.now()}
+                deleteAnimal={deleteAnimal} // Pasar la función como prop al componente. Le pasamos la referencia para que podamos llamarla desde el hijo
+              />
+            );
+          })}
       </div>
     </div>
   );
